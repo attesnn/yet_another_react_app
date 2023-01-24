@@ -1,25 +1,37 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import { Auth } from './components/Auth';
 
 function App() {
+  const [isAuth, setIsAuth] = useState(cookies.get("auth-token"))
+  const [room, setRoom] = useState ("")
+
+  if (!isAuth){
+    return (
+      <div>
+        <Auth/>
+      </div>
+    );
+
+
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  <div>
+    {room ? (<div> Chat </div>
+    ) : (
+    <div>
+      <label> Enter Room Name :  </label>
+      <input/>
+      <button></button>
     </div>
-  );
+    ) 
+     <div>  }
+  </div>
+  )
+  
 }
+
+
 
 export default App;
